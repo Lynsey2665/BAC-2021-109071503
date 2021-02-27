@@ -1,0 +1,81 @@
+---
+title: "HW2"
+author: '109071503'
+date: "2021/2/27"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+## Preparation
+     
+#### Step 1: Download customer.txt from Canvas
+#### Step 2: create a variable ages
+```{r}
+## read file customer.txt by read.table(file, header = T, sep="")
+customer<-read.table("C:/Users/dakin/Desktop/customers.txt",header = TRUE,sep="")
+## check our dataframe and let age become a variable called ages
+ages<-customer$age
+## therefore, we can call value by index
+length(ages)
+```
+     
+## Solution to HW2
+     
+#### Question 1: 5th element in the original list of ages
+```{r}
+ages[5]
+```
+     
+#### Question 2: fifth lowest age
+```{r}
+## sort ages in increasing order
+sorted_ages<-sort(ages)
+sorted_ages[5]
+```
+     
+#### Question 3: Extract the five lowest ages together
+```{r}
+## we directly call by index
+sorted_ages[1:5]
+```
+     
+#### Question 4: Get the five highest ages by first sorting them in decreasing order first
+```{r}
+## sort ages in decreasing order by sort(variable, decreasing = FALSE, …)
+decreasing_sorted_ages<-sort(ages, decreasing = TRUE)
+decreasing_sorted_ages[1:5]
+```
+     
+#### Question 5: the average (mean) age
+```{r}
+mean(ages)
+```
+     
+#### Question 6: the standard deviation of ages
+```{r}
+sd(ages)
+```
+     
+#### Question 7: Make a new variable called age_diff, with the difference between each age and the mean age
+```{r}
+age_diff<- ages -  mean(ages)
+age_diff[1:30]
+```
+     
+#### Question 8: the average "difference between each age and the mean age"
+```{r}
+## its value should be very close to zero
+mean(age_diff)
+```
+     
+#### Question 9: Visualize the raw data
+```{r}
+## (a) histogram
+hist(ages)
+## (b) density plot
+plot(density(ages))
+## (c) boxplot+stripchart
+boxplot(ages)
+stripchart(ages,add = TRUE)
+```
